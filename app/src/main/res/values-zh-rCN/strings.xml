@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">CnbetaMobile</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="hint_empty_page">这里什么都没有 !</string>
+    <string name="hint_error_page">发生了错误，请尝试刷新 !</string>
+</resources>
