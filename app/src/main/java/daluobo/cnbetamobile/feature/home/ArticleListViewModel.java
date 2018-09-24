@@ -10,6 +10,7 @@ import daluobo.cnbetamobile.data.local.Article;
 import daluobo.cnbetamobile.data.repository.ArticleRepository;
 
 public class ArticleListViewModel extends BasePageViewModel<Article>{
+
     @Override
     public LiveData<Resource<List<Article>>> loadPage(int page) {
         return ArticleRepository.getArticlePage(page);

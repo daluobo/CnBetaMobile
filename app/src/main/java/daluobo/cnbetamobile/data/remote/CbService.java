@@ -14,15 +14,15 @@ import retrofit2.http.Query;
 public interface CbService {
 
     @GET("/list/latest_{page}.htm")
-    LiveData<ApiResponse<String>> getArticlePage(@Path("page") int page);
+    LiveData<ApiResponse<String>> articlePage(@Path("page") int page);
 
     @GET("commentshow/p{page}.htm")
     LiveData<ApiResponse<String>> commentShow(@Path("page") int page);
 
-    @GET("/view/{articlId}.htm")
-    LiveData<ApiResponse<String>> getArticle(@Path("articlId") int id);
+    @GET("/view/{articleId}.htm")
+    LiveData<ApiResponse<String>> article(@Path("articleId") int id);
 
-    @GET("/comment/{articlId}.htm")
-    LiveData<ApiResponse<String>> getComment(@Path("articlId") int id, @Query("page") int page);
+    @GET("/comment/{articleId}.htm")
+    LiveData<ApiResponse<String>> comment(@Path("articleId") int id, @Query("page") int page);
 
 }

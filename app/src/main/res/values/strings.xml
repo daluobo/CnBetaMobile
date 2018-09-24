@@ -1,15 +1,14 @@
 <resources>
-    <string name="app_name">CnbetaMobile</string>
+    <string name="app_name">cnBeta</string>
     <string name="home_title">cnBeta.com</string>
     <string name="home_subtitle">中文业界资讯站</string>
 
-
-    <string name="action_settings">Settings</string>
-
-    <string name="hint_empty_page">There is really empty !</string>
+    <string name="hint_empty_page">There is empty !</string>
     <string name="hint_error_page">Something went wrong, try refresh !</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home_articles">Articles</string>
+    <string name="home_comment_show">Comment Show</string>
 
+    <string name="article_content">Article</string>
+    <string name="article_comment">Comment</string>
 </resources>

@@ -16,6 +16,11 @@ public abstract class BaseRecyclerAdapter<D, VH extends RecyclerView.ViewHolder>
     protected List<D> mData;
     protected Context mContext;
 
+    public BaseRecyclerAdapter(Context context, List<D> data){
+        mContext = context;
+        mData = data;
+    }
+
     @Override
     public void onBindViewHolder(VH holder, int position) {
         final D item = getItem(position);

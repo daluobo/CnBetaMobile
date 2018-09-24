@@ -4,10 +4,12 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.annotation.Keep;
 
 /**
  * Created by daluobo on 2016/10/24.
  */
+@Keep
 @Entity(tableName = "comment")
 public class Comment implements Parcelable {
     @PrimaryKey(autoGenerate = true)

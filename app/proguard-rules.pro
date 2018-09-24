@@ -19,3 +19,36 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+#okhttp3
+-keep class okhttp3.** { *; }
+-keep interface okhttp3.** { *; }
+#okio
+-dontwarn okio.**
+-keep class okio.**{*;}
+-keep interface okio.**{*;}
+#retrofit2
+-dontwarn retrofit2.**
+-keep class retrofit2.** { *; }
+-keep class com.squareup.okhttp.** { *; }
+-keep interface com.squareup.okhttp.** { *; }
+# okhttp3
+-keepattributes Signature
+-keepattributes *Annotation*
+-keep class okhttp3.** { *; }
+-keep interface okhttp3.** { *; }
+-dontwarn okhttp3.**
+ #gson
+ -keep class com.google.gson.**{*;}
+#butterknife
+-keep class butterknife.** { *; }
+-dontwarn butterknife.internal.**
+-keep class **$$ViewBinder { *; }
+-keepclasseswithmembernames class * {
+    @butterknife.* <fields>;
+}
+-keepclasseswithmembernames class * {
+    @butterknife.* <methods>;
+}
+ #jsoup
+ -keep class org.jsoup.**

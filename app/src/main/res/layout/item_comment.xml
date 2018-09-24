@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:orientation="vertical"
@@ -15,35 +16,35 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingEnd="5dp"
-            android:text="user_name"
             android:textColor="@color/colorPrimary"
-            android:textSize="12sp"/>
+            android:textSize="12sp"
+            tools:text="user_name"/>
 
         <TextView
             android:id="@+id/time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="time"
-            android:textSize="10sp"/>
+            android:textSize="10sp"
+            tools:text="time"/>
     </LinearLayout>
 
     <TextView
         android:id="@+id/con_box"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorCbYellow"
-        android:padding="4dp"
         android:layout_marginBottom="4dp"
         android:layout_marginTop="4dp"
-        android:text="con_box"/>
+        android:background="@color/colorCbYellow"
+        android:padding="4dp"
+        tools:text="con_box"/>
 
     <TextView
         android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="content"
         android:textColor="@color/colorBlack"
-        android:textSize="16sp"/>
+        android:textSize="16sp"
+        tools:text="content"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -58,9 +59,9 @@
             android:drawableLeft="@drawable/ic_thumb_up"
             android:drawablePadding="4dp"
             android:gravity="center"
-            android:text="0"
             android:textColor="@color/colorAccent"
-            android:textSize="10sp"/>
+            android:textSize="10sp"
+            tools:text="0"/>
 
         <TextView
             android:id="@+id/down"
@@ -69,7 +70,7 @@
             android:drawableLeft="@drawable/ic_thumb_down"
             android:drawablePadding="4dp"
             android:gravity="center"
-            android:text="0"
-            android:textSize="10sp"/>
+            android:textSize="10sp"
+            tools:text="0"/>
     </LinearLayout>
 </LinearLayout>

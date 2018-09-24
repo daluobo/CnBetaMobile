@@ -76,12 +76,14 @@ public class HtmlHelper {
                 Elements ea = e.select("a");
 
                 comment.content = ea.first().text();
+                comment.article = ea.get(1).text();
                 comment.link = ea.attr("href");
                 comment.articleId = Integer.parseInt(comment.link.substring(comment.link.lastIndexOf("/") + 1, comment.link.lastIndexOf(".")));
 
                 comment.location = e.select("strong").text();
-                comment.article = ea.get(1).text();
-                comment.author = e.select("div.jh_footer.jh_text").first().childNode(2).attr("text");
+
+                Elements es = e.select("div.jh_footer.jh_text");
+                comment.author = es.first().childNode(2).toString();
 
                 data.add(comment);
             }
@@ -135,12 +137,14 @@ public class HtmlHelper {
 
     public static Article getArticle(String html) {
         Article data = new Article();
-
-        data = new Article();
         Document doc = Jsoup.parse(html);
 
         String idStr = doc.select("article.article-holder").attr("id");
-        data.id = Integer.parseInt(idStr.replaceAll("content_", ""));
+        try {
+            data.id = Integer.parseInt(idStr.replaceAll("content_", ""));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         data.title = doc.select("h1.article-tit").text();
         data.source = doc.select("p.article-byline > span").text();
         data.time = doc.select("time.time").text();

@@ -1,9 +1,12 @@
 package daluobo.cnbetamobile.base.view;
 
+import android.content.Context;
 import android.support.annotation.IntDef;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+
+import java.util.List;
 
 import daluobo.cnbetamobile.R;
 import daluobo.cnbetamobile.base.ConfigConstant;
@@ -15,6 +18,10 @@ import daluobo.cnbetamobile.base.ConfigConstant;
 
 public abstract class LoadableAdapter<D> extends BaseRecyclerAdapter<D, RecyclerView.ViewHolder> {
     protected boolean isShowFooter = true;
+
+    public LoadableAdapter(Context context, List<D> data) {
+        super(context, data);
+    }
 
 
     @IntDef({ItemViewType.NORMAL_TYPE, ItemViewType.FOOTER_TYPE})

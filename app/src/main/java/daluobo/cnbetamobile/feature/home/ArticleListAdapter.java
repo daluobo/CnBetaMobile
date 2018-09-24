@@ -18,12 +18,9 @@ import daluobo.cnbetamobile.data.local.Article;
 import daluobo.cnbetamobile.helper.Navigator;
 
 public class ArticleListAdapter extends LoadableAdapter<Article> {
-    private Context mContext;
-
 
     public ArticleListAdapter(Context context, List<Article> data) {
-        mContext = context;
-        mData = data;
+        super(context, data);
     }
 
     @Override
@@ -35,7 +32,6 @@ public class ArticleListAdapter extends LoadableAdapter<Article> {
     protected void bindDataToItemView(RecyclerView.ViewHolder viewHolder, Article item, int position) {
         ArticleViewHolder vh = (ArticleViewHolder) viewHolder;
 
-
         vh.mArticle = item;
         if (item.isHot) {
             vh.mTitle.setTextColor(vh.mColorCbRed);
@@ -46,7 +42,6 @@ public class ArticleListAdapter extends LoadableAdapter<Article> {
         vh.mPostTime.setText(item.post_time);
         vh.mView.setText(item.view);
     }
-
 
     public class ArticleViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         @BindView(R.id.title)

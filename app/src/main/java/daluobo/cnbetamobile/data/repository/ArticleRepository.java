@@ -19,7 +19,7 @@ public class ArticleRepository extends BaseRepository {
             @NonNull
             @Override
             protected LiveData<ApiResponse<String>> createCall() {
-                return CbServiceImpl.getService().getArticlePage(page);
+                return CbServiceImpl.getService().articlePage(page);
             }
 
             @Override
@@ -34,7 +34,7 @@ public class ArticleRepository extends BaseRepository {
             @NonNull
             @Override
             protected LiveData<ApiResponse<String>> createCall() {
-                return CbServiceImpl.getService().getArticle(articleId);
+                return CbServiceImpl.getService().article(articleId);
             }
 
             @Override
