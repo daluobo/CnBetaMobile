@@ -10,5 +10,6 @@
         android:id="@+id/menu_comment"
         android:icon="@drawable/ic_chat_bubble_light_blue"
         android:title="@string/article_comment"
+        app:actionProviderClass="daluobo.cnbetamobile.view.MenuBadgeProvider"
         app:showAsAction="ifRoom"/>
 </menu>

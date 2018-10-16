@@ -1,7 +1,10 @@
 package daluobo.cnbetamobile.feature.article;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Context;
 import android.os.Bundle;
+
+import java.util.List;
 
 import daluobo.cnbetamobile.base.util.DimensionUtil;
 import daluobo.cnbetamobile.base.view.SwipeListFragment;
@@ -11,6 +14,7 @@ import daluobo.cnbetamobile.view.ItemLineDecoration;
 public class CommentFragment extends SwipeListFragment<Comment> {
     public static final String ARG_ARTICLE_ID = "article_id";
     private int mArticleId;
+    private OnCommentsGetListener mOnCommentsGetListener;
 
     public CommentFragment() {
     }
@@ -23,6 +27,16 @@ public class CommentFragment extends SwipeListFragment<Comment> {
         fragment.setArguments(args);
 
         return fragment;
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof OnCommentsGetListener) {
+            mOnCommentsGetListener = (OnCommentsGetListener) context;
+        } else {
+            throw new RuntimeException(context.toString() + " must implement OnCommentsGetListener");
+        }
     }
 
     @Override
@@ -40,5 +54,12 @@ public class CommentFragment extends SwipeListFragment<Comment> {
         initListView();
         super.onShowRefresh();
         super.onRefresh();
+    }
+
+    @Override
+    protected void onRefreshSuccess(List<Comment> data) {
+        super.onRefreshSuccess(data);
+
+        mOnCommentsGetListener.setCommentNum(data.size());
     }
 }

@@ -14,8 +14,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
-        android:navigationIcon="@drawable/ic_dehaze_white"
-        app:navigationIcon="@drawable/ic_dehaze_white"
+        android:navigationIcon="@drawable/ic_cnbeta"
+        app:navigationIcon="@drawable/ic_cnbeta"
         app:subtitleTextAppearance="@style/AppTheme.Toolbar.Subtitle"
         app:titleTextAppearance="@style/AppTheme.Toolbar.Title">
 

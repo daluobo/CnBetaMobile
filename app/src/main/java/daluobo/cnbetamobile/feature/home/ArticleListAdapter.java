@@ -1,6 +1,7 @@
 package daluobo.cnbetamobile.feature.home;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,7 +35,7 @@ public class ArticleListAdapter extends LoadableAdapter<Article> {
 
         vh.mArticle = item;
         if (item.isHot) {
-            vh.mTitle.setTextColor(vh.mColorCbRed);
+            vh.mTitle.setTextColor(Color.parseColor(item.color));
         } else {
             vh.mTitle.setTextColor(vh.mColorTitle);
         }

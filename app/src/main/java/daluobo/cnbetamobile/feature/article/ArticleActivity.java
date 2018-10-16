@@ -4,6 +4,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -19,8 +20,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import daluobo.cnbetamobile.R;
 import daluobo.cnbetamobile.data.local.Article;
+import daluobo.cnbetamobile.view.MenuBadgeProvider;
 
-public class ArticleActivity extends AppCompatActivity {
+public class ArticleActivity extends AppCompatActivity implements OnCommentsGetListener {
     public static final String ARG_ARTICLE = "article";
 
     @BindDrawable(R.drawable.ic_description)
@@ -43,7 +45,15 @@ public class ArticleActivity extends AppCompatActivity {
     private FragmentPagerAdapter mFragmentAdapter;
     private Article mArticle;
     private MenuItem mContentItem;
-    private MenuItem mCommentItem;
+    private MenuBadgeProvider mCommentBadge;
+    private MenuBadgeProvider.OnClickListener onMenuBadgeClickListener = new MenuBadgeProvider.OnClickListener() {
+        @Override
+        public void onClick(int index) {
+            mContentItem.setIcon(mIcDescriptionBlue);
+            mCommentBadge.setIcon(R.drawable.ic_chat_bubble);
+            mViewPager.setCurrentItem(index, true);
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,11 +100,11 @@ public class ArticleActivity extends AppCompatActivity {
                 switch (position) {
                     case 0:
                         mContentItem.setIcon(mIcDescription);
-                        mCommentItem.setIcon(mIcChatBubbleBlue);
+                        mCommentBadge.setIcon(R.drawable.ic_chat_bubble_light_blue);
                         break;
                     case 1:
                         mContentItem.setIcon(mIcDescriptionBlue);
-                        mCommentItem.setIcon(mIcChatBubble);
+                        mCommentBadge.setIcon(R.drawable.ic_chat_bubble);
                         break;
                 }
             }
@@ -116,23 +126,27 @@ public class ArticleActivity extends AppCompatActivity {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
                 mContentItem.setIcon(mIcDescription);
-                mCommentItem.setIcon(mIcChatBubbleBlue);
+                mCommentBadge.setIcon(R.drawable.ic_chat_bubble_light_blue);
                 mViewPager.setCurrentItem(0, true);
                 return false;
             }
         });
 
-        mCommentItem = menu.findItem(R.id.menu_comment);
-        mCommentItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem menuItem) {
-                mContentItem.setIcon(mIcDescriptionBlue);
-                mCommentItem.setIcon(mIcChatBubble);
-                mViewPager.setCurrentItem(1, true);
-                return false;
-            }
-        });
+        MenuItem commentItem = menu.findItem(R.id.menu_comment);
+        mCommentBadge = (MenuBadgeProvider) MenuItemCompat.getActionProvider(commentItem);
+        mCommentBadge.setOnClickListener(1, onMenuBadgeClickListener);
 
         return true;
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        mCommentBadge.setIcon(R.drawable.ic_chat_bubble_light_blue);
+    }
+
+    @Override
+    public void setCommentNum(int num) {
+        mCommentBadge.setBadge(num);
     }
 }

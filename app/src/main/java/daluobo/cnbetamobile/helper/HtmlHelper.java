@@ -49,7 +49,16 @@ public class HtmlHelper {
 
                 li.title = p.text();
                 if (!p.select("span").isEmpty()) {
-                    li.isHot = true;
+                    try {
+                        li.isHot = true;
+                        String colorStr = p.select("span").attr("style");
+                        int startIndex = colorStr.indexOf("color:");
+                        li.color = colorStr.substring(startIndex + 6, startIndex + 13);
+
+                        Log.d(TAG, "标题颜色：" + li.color);
+                    } catch (Exception ex) {
+                        Log.d(TAG, "获取标题颜色出错");
+                    }
                 }
 
                 li.post_time = e.select("p.txt_time > i").first().text();

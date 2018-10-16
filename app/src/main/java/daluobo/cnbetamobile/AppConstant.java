@@ -5,5 +5,5 @@ package daluobo.cnbetamobile;
  */
 
 public class AppConstant {
-    public static final String ENDPOINT = "http://m.cnbeta.com";
+    public static final String ENDPOINT = "https://m.cnbeta.com";
 }

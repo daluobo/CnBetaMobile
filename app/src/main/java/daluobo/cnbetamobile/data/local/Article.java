@@ -23,6 +23,7 @@ public class Article implements Parcelable {
     public String source;
     public String view;
     public String thumb_img;
+    public String color;
     public boolean isHot;
     public boolean isRead;
 
@@ -44,6 +45,7 @@ public class Article implements Parcelable {
         dest.writeString(this.source);
         dest.writeString(this.view);
         dest.writeString(this.thumb_img);
+        dest.writeString(this.color);
         dest.writeByte(this.isHot ? (byte) 1 : (byte) 0);
         dest.writeByte(this.isRead ? (byte) 1 : (byte) 0);
     }
@@ -62,6 +64,7 @@ public class Article implements Parcelable {
         this.source = in.readString();
         this.view = in.readString();
         this.thumb_img = in.readString();
+        this.color = in.readString();
         this.isHot = in.readByte() != 0;
         this.isRead = in.readByte() != 0;
     }
